@@ -2,10 +2,13 @@ import { Stack } from "@mui/material";
 
 import { categories } from "../utils/constants";
 
+const SideBar = ({ selectedCategory, setSelectedCategory, setVideos }) => {
 
+    const handleClick = (category) => {
+        setVideos([]);
+        setSelectedCategory(category.name);
+    };
 
-const SideBar = ({selectedCategory, setSelectedCategory}) => {
- 
     return (
         <Stack
             direction={"row"}
@@ -15,7 +18,7 @@ const SideBar = ({selectedCategory, setSelectedCategory}) => {
                 <button
                     key={category.name}
                     className="category-btn"
-                    onClick={()=>setSelectedCategory(category.name)}
+                    onClick={() => handleClick(category)}
                     style={{ background: category.name === selectedCategory && "#FC1503", color: "white" }}
                 >
                     <span style={{ color: category.name === selectedCategory ? "white" : "red", marginRight: "15px" }}>{category.icon}</span>
